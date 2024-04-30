@@ -2,17 +2,13 @@
 
 本文档旨在记录一下开发技巧以及问题。
 
-## [调试](src/common/debug/README.md)
+## [Hybird](src/hybird/README.md)
 
-主要讲解 native 调试，js 调试，以及 js 和 native 交互。
+主要介绍 Hybird 应用，包括通信方式、调试方式以及常见问题。
 
 ## [习酒](src/xijiu/README.md)
 
 习酒项目相关文档
-
-## [FAQ](src/common/faq/README.md)
-
-记录一些项目中遇见的问题。
 
 ## [工具](src/tools/README.md)
 
