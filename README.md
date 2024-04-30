@@ -1,13 +1,19 @@
-# iOS远程调试
+# 介绍
 
-需要一台_<mark style="color:red;">**Mac**</mark>_
+本文档旨在记录一下开发技巧以及问题。
 
-1. 在iPhone中设置safari，开启`网页检查器`
+## [调试](src/common/debug/README.md)
 
-<figure><img src=".gitbook/assets/webview1.PNG" alt="" width="563"><figcaption></figcaption></figure>
+主要讲解 native 调试，js 调试，以及 js 和 native 交互。
 
-2. USB线或Wi-FI连上Mac，然后打开Mac中的safari，点开开发者工具，就可以看到你的移动设备，然后可以调试其中的网页和webview
+## [习酒](src/xijiu/README.md)
 
-<figure><img src=".gitbook/assets/webview2.jpg" alt=""><figcaption></figcaption></figure>
+习酒项目相关文档
 
-<figure><img src=".gitbook/assets/webview3.jpg" alt=""><figcaption></figcaption></figure>
+## [FAQ](src/common/faq/README.md)
+
+记录一些项目中遇见的问题。
+
+## [工具](src/tools/README.md)
+
+记录一下常用工具的安装及命令使用
