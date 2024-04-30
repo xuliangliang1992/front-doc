@@ -3,7 +3,9 @@
 ## video 标签在小米手机的 WebView 中出现奇怪的 “播放按钮”
 
 经排查发现是 video 标签内的问题。
+
 ![](./assets/video.jpg)
+
 此问题仅在 Android 端部分机器会出现，在 iOS 无此问题，H5 和小程序也不会出现。
 
 莫名其妙多了一张类似 “播放按钮” 的图片浮在 video 之上，只有当 video 初次加载时会出现，播放过一次后便会消失，这是怎么一回事？
@@ -17,7 +19,9 @@
 ##### 重写 WebChromeClient 的 getDefaultVideoPoster() 方法
 
 [getDefaultVideoPoster()](https://developer.android.com/reference/android/webkit/WebChromeClient#getDefaultVideoPoster%28%29)
+
 ![](./assets/video2.jpg)
+
 When not playing, video elements are represented by a 'poster' image. The image to use can be specified by the poster attribute of the video tag in HTML. If the attribute is absent, then a default poster will be used. This method allows the ChromeClient to provide that default image.
 
 不播放时，视频元素由“海报”图像表示。可以通过 HTML 中视频标签的海报属性来指定要使用的图像。如果该属性不存在，则将使用默认海报。此方法允许 ChromeClient 提供该默认图像。
@@ -31,8 +35,11 @@ public Bitmap getDefaultVideoPoster() {
 ```
 
 修改前显示
+
 ![](./assets/video3.jpg)
+
 修改后显示
+
 ![](./assets/video4.jpg)
 
 通过修改原生代码，从根源上解决了这个问题。

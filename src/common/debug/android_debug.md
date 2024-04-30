@@ -3,7 +3,9 @@
 ## 远程调试 apk
 
 1. 打开云真机，获取远程连接命令
+
    ![](./assets/android_adb.jpg)
+
 2. 终端输入命令
 
 ```bash
@@ -33,8 +35,13 @@ WebView.setWebContentsDebuggingEnabled(true);
 
 1. `chrome://inspect` 页面显示设备上启用调试的 WebView 列表。
 2. 要开始调试，请单击要调试的 WebView 下方的“inspect” 。像使用远程浏览器选项卡一样使用 DevTools。
+
    ![](./assets/chrome1.jpg)
+
 3. 即可打开 DevTools
+
    ![](./assets/chrome2.jpg)
+
 4. 若如下图打不开，则需<font color="green">科学上网<font>
+
    ![](./assets/chrome3.jpg)
