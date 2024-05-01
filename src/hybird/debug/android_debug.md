@@ -42,6 +42,6 @@ WebView.setWebContentsDebuggingEnabled(true);
 
    ![](./assets/chrome2.jpg)
 
-4. 若如下图打不开，则需<font color="green">科学上网<font>
+4. 若如下图打不开，则需<span style="color:green">科学上网<span>
 
    ![](./assets/chrome3.jpg)

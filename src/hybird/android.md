@@ -2,6 +2,60 @@
 
 ## 文件上传
 
+开启文件上传，可使用 HTML5 标签 `<input type="file">` 唤出系统文件管理器或自定义文件管理器，然后选择文件。
+
+Android 需重写 WebChromeClient onShowFileChooser 方法
+
+```java
+private ValueCallback<Uri[]> uploadMessageAboveL;
+mWebView.setWebChromeClient(new WebChromeClient() {
+
+    @Override
+    public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
+        // 拍照
+        openCamera();
+        // 相册 文件选择模式 0单选 1多选
+        openAlbum(fileChooserParams.getMode());
+        uploadMessageAboveL = filePathCallback;
+        return true;
+    }
+});
+
+/**
+ * WebView对象，在用户取消文件选择器的情况下，需给onReceiveValue传null返回值
+ * 否则WebView在未收到返回值的情况下，无法进行任何操作，文件选择器会失效
+ */
+private void cancelUploadImage() {
+    if (uploadMessageAboveL != null) {
+        uploadMessageAboveL.onReceiveValue(null);
+        uploadMessageAboveL = null;
+    }
+}
+
+/**
+ * 上传文件给h5
+ *
+ * @param arrayList 文件列表
+ */
+private void uploadImage(ArrayList<LocalMedia> arrayList) {
+    if (null == uploadMessageAboveL || null == arrayList || arrayList.size() == 0) {
+        return;
+    }
+    Uri[] results = new Uri[arrayList.size()];
+    for (int i = 0; i < arrayList.size(); i++) {
+        LocalMedia local = arrayList.get(i);
+        String imagePath = local.getRealPath();
+        Uri uri = Uri.fromFile(new File(imagePath));
+        results[i] = uri;
+    }
+    uploadMessageAboveL.onReceiveValue(results);
+    uploadMessageAboveL = null;
+}
+```
+
+
+
+
 ## 文件下载
 
 weiView 需要设置下载监听器。
@@ -28,7 +82,7 @@ webView.setDownloadListener(new DownloadListener() {
     }
 });
 
-```
+````
 
 文件流下载
 

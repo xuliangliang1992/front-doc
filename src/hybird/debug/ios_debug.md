@@ -1,6 +1,6 @@
 # iOS 调试 H5
 
-需要一台<font color=red>Mac</font>
+需要一台<span style="color:red">Mac</span>
 
 1. 在 iPhone 中设置 safari，开启`网页检查器`
 

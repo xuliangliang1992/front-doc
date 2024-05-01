@@ -79,7 +79,7 @@ function getStatusHeight() {
 ```js
 // 将刷新页面的方法挂载到window上
 window.refreshPage = (route) => {
-  // todo 刷新页面
+  // todo 执行刷新页面
 };
 ```
 
@@ -88,13 +88,45 @@ webView.loadUrl("javascript:refreshPage('shopcart')")
 ```
 
 #### 其他适配
+
 如文件上传、下载等，详见 [Android WebView](./android.md)
+
 ### iOS
+
+#### js 调用 objc
+```ObjectiveC
+// 添加js接口
+[self.webView.configuration.userContentController addScriptMessageHandler:self name:@"openPage"];
+
+#pragma mark - WKScriptMessageHandler
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+
+    if ([message.name isEqualToString:@"makePhoneCall"]) {
+        // 拨打电话
+    }
+
+}
+
+// 移除js接口
+[self.webView.configuration.userContentController removeScriptMessageHandlerForName:@"openPage"];
+
+```
+
+#### objc 调用 js
+
+```ObjectiveC
+NSString *needRefreshPageRoutesString = [NSString stringWithFormat:@"refreshPage('%@')", self.route];
+[self.webView evaluateJavaScript:needRefreshPageRoutesString completionHandler:^(id _Nullable data, NSError * _Nullable error) {
+}];
+```
+
+#### 其他适配
+涉及权限相关需在plist添加对应权限，其他基本不需额外处理。
 
 ## 调试方式
 
-见 [调试文档](src/hybird/README.md)
+见 [调试文档](./debug/README.md)
 
-## H5 在 WebView 的适配
+## 遇到的问题
 
-见 [FAQ](src/hybird/faq/README.md)
+见 [FAQ](./faq/README.md)

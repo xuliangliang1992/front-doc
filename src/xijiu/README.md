@@ -1,7 +1,25 @@
 # 介绍
 
-本文档旨在记录一下调试方法
+本文档旨在习酒相关内容。
 
-## [分享](./share_switch.md)
+## [项目](./project/README.md)
 
-君品荟 APP 分享
+君品荟各项目介绍。
+
+- [C 端](./project/app.md)
+- [init](./project/init.md)
+- [design](./project/design.md)
+- [my](./project/my.md)
+
+## [发布](./publish/README.md)
+
+各应用发布流程。
+
+- [大禹发布](./publish/dayu.md)
+- [H5](./publish/h5.md)
+- [管理端](./publish/b.md)
+- [微信小程序](./publish/mini.md)
+- [iOS](./publish/ios.md)
+- [Android](./publish/android.md)
+- [装修](./publish/design.md)
+- [核心库](./publish/ui.md)
