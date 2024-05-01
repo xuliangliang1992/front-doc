@@ -6,7 +6,7 @@
 
 君品荟各项目介绍。
 
-- [C 端](./project/app.md)
+- [APP](./project/app.md)
 - [init](./project/init.md)
 - [design](./project/design.md)
 - [my](./project/my.md)
