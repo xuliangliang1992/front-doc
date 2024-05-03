@@ -4,13 +4,13 @@
 
 ### APP 端
 
-一开始使用一个 webview,用于展示 H5。<br />
+一开始使用一个 WebView,用于展示 H5。<br />
 后发现一些问题，如：
 
 - 页面滚动位置未记录，导致页面跳转后，页面位置丢失。<br />
 - 短视频播放时，滑动不流畅，需要使用原生播放器。<br />
 
-之后做了一部分原生改造，改为多个 webview，每个 webview 对应一个 H5 页面。
+之后做了一部分原生改造，改为多个 webview，每个 WebView 对应一个 H5 页面。
 
 ### 小程序
 
@@ -22,7 +22,7 @@
 之后测试中发现一些问题，如：
 
 - 页面刷新问题。部分页面需要每次，刷新若在 onShow()中重新加载网页，每次触发 onShow()都会增加一个 history，导致点击返回时需要多次才能离开当前页。
-- 文件处理。如果该页面不是 webview 第一层，触发 onShow 就会刷新到该 webview 第一层，导致页面数据丢失。
+- 文件处理。如果该页面不是 WebView 第一层，触发 onShow 就会刷新到该 WebView 第一层，导致页面数据丢失。
 
 所以在小程序代码为 c 端页面建了对应的页面，解决上述问题。
 后续部分页面转小程序原生也方便，只需处理对应页面即可。
@@ -92,7 +92,7 @@ interface MY {
 </style>
 ```
 
-2. 底部适配: 君品荟支持 iOS 12 以上，使用 env(safe-area-inset-bottom)即可。
+2. 底部适配: 君品荟仅支持 iOS 12 以上，使用 env(safe-area-inset-bottom)即可。
 
 ```css
 .main-container {
@@ -115,7 +115,7 @@ jump 内部处理了跳转逻辑，区分 Android、iOS、微信小程序、H5�
 Routes 路由注册在`src/wap/util/routes.js`文件。<br />
 若配置了路由中的 miniapp 则需要去小程序代码新增页面,否则小程序无法跳转。<br/>
 **建议都配置并新增小程序页面，可解决切屏刷新问题。**<br/>
-若未在路由注册，则跳转逻辑按 H5 处理。即:同一 Webview 内跳转。
+若未在路由注册，则跳转逻辑按 H5 处理。即:同一 WebView 内跳转。
 
 ```JavaScript
 const Routes = {
@@ -218,7 +218,7 @@ window.webkit.messageHandlers.handleEvent.postMessage({
 通知 APP 调用 H5 方法刷新页面，基本无感，会比 APP 强制 reload WebView 体验更好。
 
 ```javaScript
-// 调用Android的handleEvent方法，传入goBack事件和页面步数
+// 调用Android的handleEvent方法，传入refresh事件和route
 window.android?.handleEvent(
   JSON.stringify({
     event: "refresh",
@@ -227,7 +227,7 @@ window.android?.handleEvent(
     },
   })
 );
-// 调用iOS的handleEvent方法，传入goBack事件和页面步数
+// 调用iOS的handleEvent方法，传入refresh事件和route
 window.webkit.messageHandlers.handleEvent.postMessage({
   event: "refresh",
   params: {

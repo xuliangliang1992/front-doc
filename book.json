@@ -34,7 +34,8 @@
         "expandable-chapters-small",
         "sidebar-style",
         "splitter",
-        "-sharing", "sharing-plus"
+        "-sharing", 
+        "sharing-plus"
     ],
     "pluginsConfig": {
         "tbfed-pagefooter": {

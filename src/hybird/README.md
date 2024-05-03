@@ -23,7 +23,7 @@ JSBridge 的通信原理
 1. JavaScript 调用 Native 的方式
    主要有两种：注入 API 和 拦截 URL SCHEME
 
-注入 API ：通过 webview 向 js 的 window 注入对象和方法，当 js 调用该方法时，会执行相应的原生代码
+注入 API ：通过 WebView 向 js 的 window 注入对象和方法，当 js 调用该方法时，会执行相应的原生代码
 
 拦截 URL SCHEME：native 是 h5 的宿主，可以监听拦截请求，当我们通过 iframe.src 发送请求后会被 native 拦截并解析 url，按照指定的规则调用对应的方法
 
@@ -54,7 +54,7 @@ public class JSClass {
 }
 ```
 
-2. 在 webview 中添加 js 接口
+2. 在 WebView 中添加 js 接口
 
 ```java
 // 第二个参数为js接口名称
