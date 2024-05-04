@@ -6,7 +6,7 @@
 
 君品荟各项目介绍。
 
-- [APP](./project/app.md)
+- [C端](./project/app.md)
 - [init](./project/init.md)
 - [design](./project/design.md)
 - [my](./project/my.md)
@@ -21,5 +21,4 @@
 - [微信小程序](./publish/mini.md)
 - [iOS](./publish/ios.md)
 - [Android](./publish/android.md)
-- [装修](./publish/design.md)
-- [核心库](./publish/ui.md)
+- [核心库](./publish/core.md)

@@ -2,6 +2,12 @@
 
 前端开发多人协作的团队项目时应该要配置的一些规则
 
+## husky 或 simple-git-hooks
+
+## eslint
+
+## lint-staged
+
 ## commitlint
 
 ### 安装
@@ -38,7 +44,6 @@ module.exports = {
     'header-max-length': [0, 'always', 72],
   },
 };
-
 ```
 
 ### 验证
@@ -69,6 +74,7 @@ git commit -m "chore: commitlint"
  4 files changed, 3865 insertions(+), 3273 deletions(-)
  create mode 100644 commitlint.config.js
 ```
+
 ## only-allow
 
 ### 场景

@@ -19,8 +19,7 @@
     - [微信小程序](src/xijiu/publish/mini.md)
     - [iOS](src/xijiu/publish/ios.md)
     - [Android](src/xijiu/publish/android.md)
-    - [装修](src/xijiu/publish/design.md)
-    - [核心库](src/xijiu/publish/ui.md)
+    - [核心库](src/xijiu/publish/core.md)
 
 * [Hybird](src/hybird/README.md)
 
@@ -42,3 +41,4 @@
   - [nginx](src/tools/nginx.md)
   - [nrm](src/tools/nrm.md)
   - [nvm](src/tools/nvm.md)
+  - [项目配置](src/tools/project_configuration.md)

@@ -26,10 +26,6 @@
 
 介绍 Android 应用的发布
 
-## [装修](./publish/design.md)
+## [核心库](./publish/core.md)
 
-介绍装修应用 xi-deisgn、 fe-design 的发布
-
-## [核心库](./publish/ui.md)
-
-介绍核心库 xi-my、 ui 发布
+介绍核心库 xi-my、 xi-deisgn 发布
