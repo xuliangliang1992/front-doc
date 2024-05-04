@@ -37,8 +37,9 @@
 
 * [工具](src/tools/README.md)
 
+  - [项目配置](src/tools/project_configuration.md)
   - [Homebrew](src/tools/homebrew.md)
   - [nginx](src/tools/nginx.md)
   - [nrm](src/tools/nrm.md)
   - [nvm](src/tools/nvm.md)
-  - [项目配置](src/tools/project_configuration.md)
+  - [xswitch](src/tools/xswitch.md)
