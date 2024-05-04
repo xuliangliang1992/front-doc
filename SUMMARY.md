@@ -6,10 +6,10 @@
 
   - [应用 ](src/xijiu/project/README.md)
 
-    - [APP](src/xijiu/project/app.md)
+    - [调试](src/xijiu/project/debug.md)
+    - [C端](src/xijiu/project/app.md)
     - [init](src/xijiu/project/init.md)
-    - [design](src/xijiu/project/design.md)
-    - [my](src/xijiu/project/my.md)
+    - [核心库](src/xijiu/project/core.md)
 
   - [发布](src/xijiu/publish/README.md)
 

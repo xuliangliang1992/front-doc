@@ -6,10 +6,10 @@
 
 君品荟各项目介绍。
 
+- [调试](./project/debug.md)
 - [C端](./project/app.md)
 - [init](./project/init.md)
-- [design](./project/design.md)
-- [my](./project/my.md)
+- [核心库](./project/core.md)
 
 ## [发布](./publish/README.md)
 

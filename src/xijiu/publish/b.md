@@ -1,10 +1,10 @@
 # 管理端 发布
 管理端分为运营后台和商家后台
 
-**运营后台** 主要由 fd-admin-marketing、fd-admin-product、fd-admin-system、fd-admin-trade组成。<br/>
-**商家后台** 主要由 fd-seller-marketing、fd-seller-product、fd-seller-system、fd-seller-trade组成。<br/>
-引用了init 工程，这 9 个应用发布流程一样。
+- **运营后台** 主要由 fd-admin-marketing、fd-admin-product、fd-admin-system、fd-admin-trade组成。<br/>
+- **商家后台** 主要由 fd-seller-marketing、fd-seller-product、fd-seller-system、fd-seller-trade组成。<br/>
 
+引用了init 工程，这 9 个应用发布流程一样。<br/>
 除此之外还引用了 ui 库，是 gmall 核心库，发布方式见 [核心库发布](./core.md)
 ## 运行流水线
 
