@@ -10,6 +10,7 @@
 - [C端](./project/app.md)
 - [init](./project/init.md)
 - [核心库](./project/core.md)
+- [APP推送](./project/push.md)
 
 ## [发布](./publish/README.md)
 

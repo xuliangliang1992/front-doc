@@ -10,6 +10,7 @@
     - [C端](src/xijiu/project/app.md)
     - [init](src/xijiu/project/init.md)
     - [核心库](src/xijiu/project/core.md)
+    - [app推送](src/xijiu/project/push.md)
 
   - [发布](src/xijiu/publish/README.md)
 
