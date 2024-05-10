@@ -112,15 +112,17 @@ window.webkit.messageHandlers.handleEvent.postMessage({
    ```
 
 ### iOS
-iOS可直接使用
+
+iOS 可直接使用
 
 ### android
+
 android 需将上述参数处理后使用`"click_type":"intent"`方式
 
 #### intent 字段 java 代码拼接
 
 ```java
- /**
+/**
  * 获取跳转url
  * 如果您手动拼装intent，
  * 如有特殊字符：比如 Scheme 链接含有#符号，
@@ -135,9 +137,10 @@ android 需将上述参数处理后使用`"click_type":"intent"`方式
  * @param route       路由
  * @param queryString 参数
  * @param source      来源
- * @return intent
+ * @return intentString
+ * @throws UnsupportedEncodingException
  */
-public static String getIntentString(String route, String origin, String path, String queryString, String source) {
+public static String getIntentString(String route, String origin, String path, String queryString, String source) throws UnsupportedEncodingException {
     boolean isMain = "/home".equals(route) || "/member".equals(route);
     StringBuilder url = new StringBuilder();
     url.append("intent://com.getui.push/");
@@ -163,15 +166,33 @@ public static String getIntentString(String route, String origin, String path, S
     } else if ("/member".equals(route)) {
         url.append("i.main_tab_index=4;");
     } else {
-        url.append("S.route=").append(route).append(";");
-        url.append("S.queryString=").append(queryString).append(";");
-        url.append("S.path=").append(path).append(";");
+        url.append("S.route=").append(URLEncoder.encode(route, "utf-8")).append(";");
+        url.append("S.queryString=").append(URLEncoder.encode(queryString, "utf-8")).append(";");
+        url.append("S.path=").append(URLEncoder.encode(path, "utf-8")).append(";");
         url.append("S.source=").append(source).append(";");
-        url.append("S.origin=").append(origin);
+        url.append("S.origin=").append(URLEncoder.encode(origin, "utf-8")).append(";");
     }
     url.append("end");
     return url.toString();
 }
+```
+
+#### test
+
+```java
+@Test
+public void getIntentString_isCorrect() throws UnsupportedEncodingException {
+    String homeIntentString = WebUrlUtil.getIntentString("/home","https://mall-dev.exijiu.com",PageJumpConstant.SHOP, "","bbs");
+    String detailIntentString = WebUrlUtil.getIntentString("/detail","https://mall-dev.exijiu.com",PageJumpConstant.SHOP, "id=17741","bbs");
+
+    System.out.println(homeIntentString);
+    System.out.println(detailIntentString);
+}
+```
+
+```text
+intent://com.getui.push/main?#Intent;scheme=jphpush;launchFlags=0x04000000;package=com.exijiu.junpinhui;component=com.exijiu.junpinhui%2Fcom.iwhalecloud.xijiu.pages.main.MainActivity;S.gttask=;i.main_tab_index=0;end
+intent://com.getui.push/detail?#Intent;scheme=jphpush;launchFlags=0x04000000;package=com.exijiu.junpinhui;component=com.exijiu.junpinhui%2Fcom.iwhalecloud.xijiu.pages.other.PushActivity;S.gttask=;S.route=%2Fdetail;S.queryString=id%3D17741;S.path=%2Fpages%2Fshop.html;S.source=bbs;S.origin=https%3A%2F%2Fmall-dev.exijiu.com;end
 ```
 
 #### 示例
