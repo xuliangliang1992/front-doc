@@ -2,13 +2,80 @@
 
 [个推文档](https://docs.getui.com/getui/server/rest_v2/common_args/?id=doc-title-6)
 
-## payload消息参数定义
+## 个性化推送开关
+
+1. h5 打开个性化服务开关时，通知到 app，app 开启推送服务
+
+   - android
+
+   ```javascript
+   window.android?.handleEvent(
+     JSON.stringify({
+       event: "turnOnPush",
+     })
+   );
+   ```
+
+   - ios
+
+   ```javascript
+   window.webkit.messageHandlers.handleEvent.postMessage({
+     event: "turnOnPush",
+   });
+   ```
+
+2. h5 关闭个性化服务开关时，通知到 app，app 关闭推送服务
+
+   - android
+
+   ```javascript
+   window.android?.handleEvent(
+     JSON.stringify({
+       event: "turnOffPush",
+     })
+   );
+   ```
+
+   - ios
+
+   ```javascript
+   window.webkit.messageHandlers.handleEvent.postMessage({
+     event: "turnOffPush",
+   });
+   ```
+
+## 上传 cid
+
+在登录之后上传 cid，setParams 事件中有 token 参数时
+
+```javascript
+window.android.handleEvent(
+  JSON.stringify({
+    event: "setParams",
+    params: {
+      token,
+      jfToken,
+      bbsToken,
+    },
+  })
+);
+window.webkit.messageHandlers.handleEvent.postMessage({
+  event: "setParams",
+  params: {
+    token,
+    jfToken,
+    bbsToken,
+  },
+});
+```
+
+## payload 消息参数定义
 
 - route: 页面路由
-- path: h5应用。有/pages/shop.html 和 /pages/shop_base.html 两种
-- source: 用于区分h5来源。有jph 、 jf、bbs三种，当前需求默认传 jph
-- params：h5参数。用于加载数据，一般为h5链接?后内容
-- origin：h5域名。用于区分环境，有下面五个
+- path: h5 应用。有/pages/shop.html 和 /pages/shop_base.html 两种
+- source: 用于区分 h5 来源。有 jph 、 jf、bbs 三种，当前需求默认传 jph
+- params：h5 参数。用于加载数据，一般为 h5 链接?后内容
+- origin：h5 域名。用于区分环境，有下面五个
 
   ```text
   dev：	https://mall-dev.exijiu.com
@@ -24,69 +91,33 @@
 
    ```json
    {
-       "route": "detail",
-       "params": "id=17744",
-       "path": "/pages/shop.html",
-       "source": "jph",
-       "origin": "https://mall-dev.exijiu.com"
+     "route": "detail",
+     "params": "id=17744",
+     "path": "/pages/shop.html",
+     "source": "jph",
+     "origin": "https://mall-dev.exijiu.com"
    }
    ```
+
 2. 店铺 https://mall-dev.exijiu.com/pages/shop.html#/shophome?id=19902&currentTab=0
 
    ```json
    {
-       "route": "shophome",
-       "params": "id=19902&currentTab=0",
-       "path": "/pages/shop.html",
-       "source": "jph",
-       "origin": "https://mall-dev.exijiu.com"
+     "route": "shophome",
+     "params": "id=19902&currentTab=0",
+     "path": "/pages/shop.html",
+     "source": "jph",
+     "origin": "https://mall-dev.exijiu.com"
    }
    ```
-   
-## 个性化推送开关
-1. h5打开个性化服务开关时，通知到app，app开启推送服务
 
-	- android
-	
-	```javascript
-	window.android?.handleEvent(
-	  JSON.stringify({
-	    event: 'turnOnPush'
-	  }),
-	)
-	```
-	- ios
+### iOS
+iOS可直接使用
 
-	```javascript
-	window.webkit.messageHandlers.handleEvent.postMessage({
-	  event: 'turnOnPush',
-	})
-	```
-	
-2. h5关闭个性化服务开关时，通知到app，app关闭推送服务
+### android
+android 需将上述参数处理后使用`"click_type":"intent"`方式
 
-	- android
-
-	```javascript
-	window.android?.handleEvent(
-	  JSON.stringify({
-	    event: 'turnOffPush'
-	  }),
-	)
-	```
-	- ios
-
-	```javascript
-	window.webkit.messageHandlers.handleEvent.postMessage({
-	  event: 'turnOffPush',
-	})
-	```	
-
-
-## android
-`"click_type":"intent"`使用 intent 传值
-
-### intent字段java代码拼接
+#### intent 字段 java 代码拼接
 
 ```java
  /**
@@ -143,21 +174,22 @@ public static String getIntentString(String route, String origin, String path, S
 }
 ```
 
-###示例
+#### 示例
 
 - 首页
 
-	```text
-	intent://com.getui.push/main?#Intent;scheme=jphpush;launchFlags=0x04000000;package=com.exijiu.junpinhui;component=com.exijiu.junpinhui%2Fcom.iwhalecloud.xijiu.pages.main.MainActivity;S.gttask=;i.main_tab_index=0;end
-	```
+  ```text
+  intent://com.getui.push/main?#Intent;scheme=jphpush;launchFlags=0x04000000;package=com.exijiu.junpinhui;component=com.exijiu.junpinhui%2Fcom.iwhalecloud.xijiu.pages.main.MainActivity;S.gttask=;i.main_tab_index=0;end
+  ```
 
 - 个人中心
 
-	```text
-	intent://com.getui.push/main?#Intent;scheme=jphpush;launchFlags=0x04000000;package=com.exijiu.junpinhui;component=com.exijiu.junpinhui%2Fcom.iwhalecloud.xijiu.pages.main.MainActivity;S.gttask=;i.main_tab_index=4;end
-	```
+  ```text
+  intent://com.getui.push/main?#Intent;scheme=jphpush;launchFlags=0x04000000;package=com.exijiu.junpinhui;component=com.exijiu.junpinhui%2Fcom.iwhalecloud.xijiu.pages.main.MainActivity;S.gttask=;i.main_tab_index=4;end
+  ```
+
 - 其他页面
- 
- 	```text
-	intent://com.getui.push/detail?#Intent;scheme=jphpush;launchFlags=0x04000000;package=com.exijiu.junpinhui;component=com.exijiu.junpinhui%2Fcom.iwhalecloud.xijiu.push.PushActivity;S.gttask=;S.route=%2Fdetail;S.queryString=id%3D17744;S.path=%2Fpages%2Fshop.html;S.source=jph;S.origin=https%3A%2F%2Fmall-dev.exijiu.com;end
-	```
+
+  ```text
+  intent://com.getui.push/detail?#Intent;scheme=jphpush;launchFlags=0x04000000;package=com.exijiu.junpinhui;component=com.exijiu.junpinhui%2Fcom.iwhalecloud.xijiu.push.PushActivity;S.gttask=;S.route=%2Fdetail;S.queryString=id%3D17744;S.path=%2Fpages%2Fshop.html;S.source=jph;S.origin=https%3A%2F%2Fmall-dev.exijiu.com;end
+  ```
