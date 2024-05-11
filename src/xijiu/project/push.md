@@ -113,7 +113,7 @@ window.webkit.messageHandlers.handleEvent.postMessage({
 
 ### iOS
 
-iOS 可直接使用
+iOS 可直接使用payload参数
 
 ### android
 

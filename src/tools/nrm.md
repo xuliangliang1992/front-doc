@@ -12,36 +12,36 @@ npm install -g nrm
 
 1. 查看当前源
 
-```bash
-nrm current
-```
+    ```bash
+    nrm current
+    ```
 
 2.  查看可选源
 
-```bash
-nrm ls
-```
+    ```bash
+    nrm ls
+    ```
 
 3. 切换源
 
-```bash
-nrm use <registry>
-```
+    ```bash
+    nrm use <registry>
+    ```
 
 4. 添加源
 
-```bash
-nrm add <registry> <url>
-```
+    ```bash
+    nrm add <registry> <url>
+    ```
 
 5. 删除源
 
-```bash
-nrm del <registry>
-```
+    ```bash
+    nrm del <registry>
+    ```
 
 6. 测试源
 
-```bash
-nrm test <registry>
-```
+    ```bash
+    nrm test <registry>
+    ```

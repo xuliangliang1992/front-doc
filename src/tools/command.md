@@ -39,6 +39,7 @@ https://chrome-devtools-frontend.appspot.com/
 ### mac 环境变量
 
 ```bash
+touch ~/.bash_profile
 open -e ~/.bash_profile
 source ~/.bash_profile
 ```

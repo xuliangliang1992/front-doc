@@ -2,6 +2,8 @@
 
 本文档旨在记录一下开发技巧以及问题。
 
+[Gmall标品文档](https://www.yuque.com/gmall/manual)
+
 ## [习酒](src/xijiu/README.md)
 
 习酒项目相关文档
