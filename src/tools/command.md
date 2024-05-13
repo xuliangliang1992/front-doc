@@ -44,6 +44,15 @@ open -e ~/.bash_profile
 source ~/.bash_profile
 ```
 
+### zsh 找不到command
+添加 source ~/.bash_profile
+
+``` bash
+touch ~/.zshrc 
+open -e ~/.zshrc
+source ~/.zshrc 
+```
+
 ### mac 查找
 
 ```bash
